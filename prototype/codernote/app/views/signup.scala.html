@@ -1,0 +1,44 @@
+@(message: String)
+
+@main("singup") {
+  <h1 class="text-center"> @message </h1>
+  <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+    <form id="signup" action="" method="post" role="form" data-toggle="validator">
+
+      <div class="form-group">
+        <label for="usrName" class="form-control-label">Username</label>
+        <input type="email" class="form-control" id="usrName" name="usrName" required
+          value="" placeholder="use email address as your username"
+          data-error="Username should be a valid email address">
+        <div class="help-block with-errors"></div>
+      </div>
+
+      <!-- set up password by typing it in twice -->
+      <div class="form-group">
+        <label for="usrPasswd" class="form-control-label" >Password</label>
+        <div class="form-group">
+          <input type="password" class="form-control" id="usrPasswd" name="usrPasswd"
+            data-minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" data-error="invalid password"
+            placeholder="eg Codernote2016" required>
+          <span class="help-block" >8-20 characters, containing numbers, uppercase and lowercase characters</span>
+          <div class="help-block with-errors"></div>
+        </div>
+        <label for="usrPasswdConfirm" class="form-control-label" >Confirm Password</label>
+        <div class="form-group">
+          <input type="password" class="form-control" id="usrPasswdConfirm" name="usrPasswdConfirm"
+            data-match="#usrPasswd" data-match-error="Whoops, these don't match"
+            placeholder="eg Codernote2016" required>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="btn-group" style="float: right">
+          <button class="btn btn-default ">Register</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+}
