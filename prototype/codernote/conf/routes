@@ -16,3 +16,4 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 # Codernote routes
 GET     /login                      controllers.SigninController.signin
 GET     /signup                     controllers.HomeController.signup
+POST    /signup                     controllers.HomeController.addUser

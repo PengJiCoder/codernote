@@ -1,8 +1,15 @@
 package controllers;
 
-import play.mvc.*;
+import models.User;
+import play.data.DynamicForm;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.index;
+import views.html.signup;
 
-import views.html.*;
+import java.util.Map;
+
+import static play.data.Form.form;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -22,6 +29,19 @@ public class HomeController extends Controller {
 
     public Result signup() {
         return ok(signup.render("Winter is coming"));
+    }
+
+    public Result addUser() {
+        DynamicForm requestData = form().bindFromRequest();
+        Map<String, String> map = requestData.data();
+        User user = new User();
+        user.name = map.get("usrName");
+        user.password = map.get("usrPasswd");
+        user.insert();
+        User usr = User.findByName(user.name);
+        System.out.println("haha");
+
+        return redirect("/");
     }
 
 }
